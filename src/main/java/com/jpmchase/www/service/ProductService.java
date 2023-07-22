@@ -17,11 +17,11 @@ public class ProductService {
     @PostConstruct
     public void createDummyListOfProducts() {
         IntStream.range(0, 100).forEach(i -> {
-            Product product = new Product();
-            product.setId(new Random().nextInt());
-            product.setName("Product " + i);
-            product.setDescription("Product description " + i);
-            product.setPrice(new Random().nextDouble());
+            Product product = Product.builder().
+                    id(i)
+                    .name("Product " + i)
+                    .description("Product description " + i)
+                    .price(new Random().nextDouble()).build();
             products.add(product);
         });
     }
@@ -29,7 +29,7 @@ public class ProductService {
     public Product getProductById(int productId) {
         return products.stream().filter(i -> i.getId() == productId)
                 .findAny()
-                .orElseThrow(() -> new RuntimeException("Product with id " + productId + " not found."));
+                .orElse(Product.builder().build());
     }
 
     public List<Product> getAllProducts() {
