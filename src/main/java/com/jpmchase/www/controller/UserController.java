@@ -1,6 +1,6 @@
 package com.jpmchase.www.controller;
 
-import com.jpmchase.www.entity.ApplicationUser;
+import com.jpmchase.www.entity.User;
 import com.jpmchase.www.service.ApplicationUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -14,7 +14,7 @@ public class UserController {
     private ApplicationUserService applicationUserService;
 
     @PostMapping("/users")
-    public String addUser(@RequestBody ApplicationUser applicationUser) {
+    public String addUser(@RequestBody User applicationUser) {
         return applicationUserService.saveUser(applicationUser);
     }
 }

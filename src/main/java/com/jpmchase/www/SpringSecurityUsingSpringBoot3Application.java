@@ -14,7 +14,7 @@ public class SpringSecurityUsingSpringBoot3Application {
      *
      * https://www.youtube.com/watch?v=R76S0tfv36w&ab_channel=JavaTechie
      * https://www.youtube.com/watch?v=NcLtLZqGu2M&list=PLVz2XdJiJQxynOpTm0DuufOkfWHNamJsF&index=14&ab_channel=JavaTechie
-     *
+     *https://www.youtube.com/watch?v=Wp4h_wYXqmU&list=PLVz2XdJiJQxynOpTm0DuufOkfWHNamJsF&index=16&ab_channel=JavaTechie
      * Admin/Admin
      * User/User
      * */

@@ -1,6 +1,6 @@
 package com.jpmchase.www.config;
 
-import com.jpmchase.www.entity.ApplicationUser;
+import com.jpmchase.www.entity.User;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -16,7 +16,7 @@ public class UserDetailsImpl implements UserDetails {
     private String password;
     private List<GrantedAuthority> authorities;
 
-    public UserDetailsImpl(ApplicationUser applicationUser) {
+    public UserDetailsImpl(User applicationUser) {
         this.userName = applicationUser.getUserName();
         this.password = applicationUser.getPassword();
         this.authorities = Arrays.stream(applicationUser.getRoles().split(","))

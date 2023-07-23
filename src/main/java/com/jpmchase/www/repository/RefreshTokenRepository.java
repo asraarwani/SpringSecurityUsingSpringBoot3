@@ -1,13 +1,13 @@
 package com.jpmchase.www.repository;
 
-import com.jpmchase.www.entity.User;
+import com.jpmchase.www.entity.RefreshToken;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 import java.util.Optional;
 
 @Repository
-public interface UserDetailsRepository extends JpaRepository<User, Integer> {
+public interface RefreshTokenRepository extends JpaRepository<RefreshToken, Integer> {
 
-    Optional<User> findByUserName(String userName);
+    Optional<RefreshToken> findByToken(String token);
 }

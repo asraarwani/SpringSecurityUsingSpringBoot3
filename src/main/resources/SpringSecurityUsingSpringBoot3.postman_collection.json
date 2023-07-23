@@ -116,6 +116,33 @@
 				}
 			},
 			"response": []
+		},
+		{
+			"name": "Get Refresh Token",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"refreshToken\" : \"4f122f90-cd5f-47ab-85b0-70b9c76c38bd\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/refreshToken",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"refreshToken"
+					]
+				}
+			},
+			"response": []
 		}
 	]
 }

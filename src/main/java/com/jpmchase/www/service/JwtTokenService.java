@@ -8,7 +8,6 @@ import io.jsonwebtoken.io.Decoders;
 import io.jsonwebtoken.security.Keys;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Component;
-import org.springframework.util.StringUtils;
 
 import java.security.Key;
 import java.util.Date;
@@ -51,16 +50,9 @@ public class JwtTokenService {
         return (username.equals(userDetails.getUsername()) && !isTokenExpired(token));
     }
 
-    public AuthResponse generateJwtToken(String userName) {
+    public String generateJwtToken(String userName) {
         Map<String, Objects> claims = new HashMap<>();
-        AuthResponse authResponse = null;
-        String jwtToken = generateToken(claims, userName);
-        if (StringUtils.hasText(jwtToken)) {
-            authResponse = new AuthResponse();
-            authResponse.setStatus(true);
-            authResponse.setJwtToken(jwtToken);
-        }
-        return authResponse;
+        return generateToken(claims, userName);
     }
 
     private String generateToken(Map<String, Objects> claims, String userName) {
@@ -68,7 +60,7 @@ public class JwtTokenService {
                 .setClaims(claims)
                 .setSubject(userName)
                 .setIssuedAt(new Date(System.currentTimeMillis()))
-                .setExpiration(new Date(System.currentTimeMillis() + 1000 * 60 * 30))
+                .setExpiration(new Date(System.currentTimeMillis() + 1000 * 60 * 2))
                 .signWith(getSignKey(), SignatureAlgorithm.HS256)
                 .compact();
     }
