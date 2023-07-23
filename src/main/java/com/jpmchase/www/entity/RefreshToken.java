@@ -15,7 +15,7 @@ import java.time.Instant;
 @AllArgsConstructor
 public class RefreshToken {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     private String token;
     private Instant expiry;

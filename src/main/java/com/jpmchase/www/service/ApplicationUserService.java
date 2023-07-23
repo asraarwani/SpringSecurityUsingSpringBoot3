@@ -1,6 +1,6 @@
 package com.jpmchase.www.service;
 
-import com.jpmchase.www.entity.ApplicationUser;
+import com.jpmchase.www.entity.User;
 import com.jpmchase.www.repository.UserDetailsRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -15,7 +15,7 @@ public class ApplicationUserService {
     @Autowired
     private PasswordEncoder passwordEncoder;
 
-    public String saveUser(ApplicationUser applicationUser) {
+    public String saveUser(User applicationUser) {
         applicationUser.setPassword(passwordEncoder.encode(applicationUser.getPassword()));
         userDetailsRepository.save(applicationUser);
         return "Success";
