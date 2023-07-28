@@ -6,6 +6,7 @@ import com.jpmchase.www.repository.RefreshTokenRepository;
 import com.jpmchase.www.repository.UserDetailsRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.time.Instant;
 import java.util.Optional;
@@ -20,9 +21,14 @@ public class RefreshTokenService {
     @Autowired
     private UserDetailsRepository userDetailsRepository;
 
+    @Transactional
     public RefreshToken getRefreshToken(String userName) {
         Optional<User> optionalUser = userDetailsRepository.findByUserName(userName);
         if (optionalUser.isPresent()) {
+            //In case user token exists and user tries to create a new token, we just delete the old token
+            refreshTokenRepository.deleteByUser(optionalUser.get());
+            refreshTokenRepository.flush();
+            System.out.println("Old token deleted for user");
             RefreshToken refreshToken = RefreshToken.builder()
                     .user(optionalUser.get())
                     .token(UUID.randomUUID().toString())

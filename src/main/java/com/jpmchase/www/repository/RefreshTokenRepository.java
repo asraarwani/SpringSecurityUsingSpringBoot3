@@ -1,6 +1,7 @@
 package com.jpmchase.www.repository;
 
 import com.jpmchase.www.entity.RefreshToken;
+import com.jpmchase.www.entity.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
@@ -10,4 +11,6 @@ import java.util.Optional;
 public interface RefreshTokenRepository extends JpaRepository<RefreshToken, Integer> {
 
     Optional<RefreshToken> findByToken(String token);
+
+    void deleteByUser(User user);
 }
